@@ -1,0 +1,16 @@
+﻿@model List<User>
+@{
+    ViewData["Title"] = "PresentaionApp";
+}
+
+@foreach(var obj in Model)
+{
+    <tr>
+        <td>Accardion</td>
+        <td>@obj.Login</td>
+        <td>@obj.Email</td>
+        <td>@obj.Created</td>
+        <td>@obj.LastLogin</td>
+        <td>@obj.Status</td>
+    </tr>
+}
