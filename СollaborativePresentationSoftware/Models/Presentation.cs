@@ -1,4 +1,4 @@
-﻿namespace СollaborativePresentationSoftware.Models
+﻿namespace PresentationApp.Models
 {
     public class Presentation
     {

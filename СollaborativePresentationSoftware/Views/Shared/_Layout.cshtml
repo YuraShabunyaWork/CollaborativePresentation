@@ -8,40 +8,34 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/СollaborativePresentationSoftware.styles.css" asp-append-version="true" />
 </head>
-<body>
+<body class="m-0 p-0">
     <header>
         <nav class="navbar bg-light">
             <div class="container-fluid">
                 <div>
-                    <span class="navbar-brand mb-0">PresentationApp</span>
+                    <a asp-controller="Home" asp-action="Index" class="navbar-brand">PresentationApp</a>
                 </div>
                 <div>
                     <h2>Users</h2>
                 </div>
-                <div class="btn-group rounded-pill">
-                    <a asp-controller="Enter" asp-action="SingIn" class="btn  btn-outline-secondary">SingIn</a>
-                    <a asp-controller="Enter" asp-action="LogIn" class="btn btn-primary">LogIn</a>                  
+                <div class="btn-group">
+                        @if(User.Identity != null && User.Identity.IsAuthenticated)
+                        {
+                            <p class="text-secondary m-2">@User.Identity.Name</p>
+                            <a asp-controller="Enter" asp-action="LogOut" class="btn btn-danger">LogOut</a>
+                        }
+                    else
+                    {
+                        <a asp-controller="Enter" asp-action="SingIn" class="btn btn-outline-secondary">SingIn</a>
+                        <a asp-controller="Enter" asp-action="LogIn" class="btn btn-primary">LogIn</a>
+                    }
                 </div>
             </div>
         </nav>
     </header>
     
-    <div class="container">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Login</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Registered at</th>
-                    <th scope="col">Last Login at</th>
-                    <th scope="col">Status</th>
-                </tr>
-            </thead>
-            <thead>
-                @RenderBody()
-            </thead>
-        </table>
+    <div class="container">        
+        @RenderBody()
     </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

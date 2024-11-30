@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using ÑollaborativePresentationSoftware.Data;
-using ÑollaborativePresentationSoftware.Hubs;
+using PresentationApp.Data;
+using PresentationApp.Hubs;
+using PresentationApp.Services.Implementatons;
+using PresentationApp.Services.Interfases;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +11,15 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
     builder.Configuration.GetConnectionString("DefaultConnetion")
     ));
 builder.Services.AddSignalR();
+builder.Services.AddAuthentication("Cookies")
+    .AddCookie(options => options.LoginPath = "/Enter/LogIn");
+builder.Services.AddAuthorization();
+builder.Services.AddScoped<IUserService, UserService>();
+
 
 var app = builder.Build();
+app.UseAuthentication();
+app.UseAuthorization();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();

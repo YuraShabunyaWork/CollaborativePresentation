@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using СollaborativePresentationSoftware.Models;
+using PresentationApp.Models;
 
-namespace СollaborativePresentationSoftware.Data
+namespace PresentationApp.Data
 {
     public class ApplicationDbContext : DbContext
     {

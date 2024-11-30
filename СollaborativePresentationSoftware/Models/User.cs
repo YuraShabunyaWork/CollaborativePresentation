@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
-namespace СollaborativePresentationSoftware.Models
+namespace PresentationApp.Models
 {
     [Index("Email", IsUnique = true)]
     public class User
@@ -10,6 +10,7 @@ namespace СollaborativePresentationSoftware.Models
         public int Id { get; set; }
         public string Login { get; set; }
         public string Email { get; set; }
+        public string Password { get; set; }
         public bool Status { get; set; }
         public DateTime Created {  get; set; } = DateTime.Now;
         public DateTime LastLogin { get; set; } = DateTime.Now;

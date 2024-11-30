@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using СollaborativePresentationSoftware.Data;
+using PresentationApp.Data;
 
 #nullable disable
 
-namespace СollaborativePresentationSoftware.Migrations
+namespace PresentationApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -22,7 +22,7 @@ namespace СollaborativePresentationSoftware.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("СollaborativePresentationSoftware.Models.Presentation", b =>
+            modelBuilder.Entity("PresentationApp.Models.Presentation", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -49,7 +49,7 @@ namespace СollaborativePresentationSoftware.Migrations
                     b.ToTable("Presentations");
                 });
 
-            modelBuilder.Entity("СollaborativePresentationSoftware.Models.User", b =>
+            modelBuilder.Entity("PresentationApp.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -67,7 +67,11 @@ namespace СollaborativePresentationSoftware.Migrations
                     b.Property<DateTime>("LastLogin")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Login")
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -82,18 +86,18 @@ namespace СollaborativePresentationSoftware.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("СollaborativePresentationSoftware.Models.Presentation", b =>
+            modelBuilder.Entity("PresentationApp.Models.Presentation", b =>
                 {
-                    b.HasOne("СollaborativePresentationSoftware.Models.User", "User")
+                    b.HasOne("PresentationApp.Models.User", "User")
                         .WithOne("Presentation")
-                        .HasForeignKey("СollaborativePresentationSoftware.Models.Presentation", "UserId")
+                        .HasForeignKey("PresentationApp.Models.Presentation", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("СollaborativePresentationSoftware.Models.User", b =>
+            modelBuilder.Entity("PresentationApp.Models.User", b =>
                 {
                     b.Navigation("Presentation");
                 });

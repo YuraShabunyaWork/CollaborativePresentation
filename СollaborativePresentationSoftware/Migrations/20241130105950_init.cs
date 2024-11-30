@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace СollaborativePresentationSoftware.Migrations
+namespace PresentationApp.Migrations
 {
     /// <inheritdoc />
     public partial class init : Migration

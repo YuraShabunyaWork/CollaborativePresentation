@@ -1,20 +1,21 @@
 using Microsoft.AspNetCore.Mvc;
-using СollaborativePresentationSoftware.Data;
-using СollaborativePresentationSoftware.Models;
+using PresentationApp.Data;
+using PresentationApp.Models;
+using PresentationApp.Services.Interfases;
 
-namespace СollaborativePresentationSoftware.Controllers
+namespace PresentationApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IUserService _userService;
 
-        public HomeController(ApplicationDbContext context)
+        public HomeController(IUserService userService)
         {
-            _context = context;
+            _userService = userService;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            IEnumerable<User> users = _context.Users.ToList();
+            IEnumerable<User> users = await _userService.GetUsersAsync();
             return View(users);
         }
 

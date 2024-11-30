@@ -1,0 +1,26 @@
+﻿@model SinginDto
+@{
+    ViewData["Title"] = "SingIn";
+}
+
+<div class="row justify-content-center align-items-center" style="height:70vh">
+    <div class="col-6">
+        <form method="post">
+            <div class="mb-2 form-floating">
+                <input asp-for="@Model.Login" type="text" class="form-control" id="login" placeholder = "mario" />
+                <label class="form-label text-muted">Login</label>
+            </div>
+            <div class="mb-2 form-floating">
+                <input asp-for="@Model.Email" type="email" class="form-control" id="email" placeholder = "mario@exemple.com" />
+                <label class="form-label text-muted">Email</label>
+            </div>
+            <div class="mb-2 form-floating">
+                <input asp-for="@Model.Password" type="password" class="form-control" id="password" placeholder = ""/>
+                <label class="form-label text-muted">Password</label>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary w-25">SingIn</button>
+            </div>
+        </form>
+    </div>
+</div>

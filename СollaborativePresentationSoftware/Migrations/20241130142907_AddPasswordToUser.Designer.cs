@@ -12,8 +12,8 @@ using PresentationApp.Data;
 namespace PresentationApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241130105950_init")]
-    partial class init
+    [Migration("20241130142907_AddPasswordToUser")]
+    partial class AddPasswordToUser
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -71,6 +71,10 @@ namespace PresentationApp.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
